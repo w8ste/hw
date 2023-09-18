@@ -1,0 +1,92 @@
+% start preamble -------------------------------------------------------------
+\documentclass{article}
+\usepackage{amsmath, amsthm, amssymb, amsfonts}
+\usepackage{thmtools}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{geometry}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{framed}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tcolorbox}
+\usepackage{ dsfont }
+\usepackage[math]{cellspace}
+\usepackage{forest}
+\usepackage{tikz-qtree}
+\usepackage { cmll }
+\usepackage{ tipa }
+
+\setlength\cellspacetoplimit{3pt}
+\setlength\cellspacebottomlimit{3pt}
+\colorlet{LightGray}{White!90!Periwinkle}
+\colorlet{LightOrange}{Orange!15}
+\colorlet{LightGreen}{Green!15}
+
+\graphicspath{ {./pictures/} }
+
+\newcommand{\HRule}[1]{\rule{\linewidth}{#1}}
+\newcommand*\xor{\mathbin{\oplus}}
+% end preamble -------------------------------------------------------------------
+
+\begin{document}
+
+% ------------------------------------------------------------------------------
+% Cover Page and ToC
+% ------------------------------------------------------------------------------
+
+\title{ \normalsize \textsc{}
+		\\ [2.0cm]
+		\HRule{1.5pt} \\
+		\LARGE \textbf{\uppercase{ Programmiertestat 01 }
+        \HRule{2.0pt} \\ [0.6cm] \LARGE{ Rechnerorganisation } \vspace*{10\baselineskip}}
+		}
+\date{Juni 2023}
+\author{\textbf{} \\
+		Name: Hannes Albert}
+
+\maketitle
+\setlength\leftskip{1cm}
+
+Bemerkung: Für das folgende Testat wurden ausschließlich folgende Quellen verwendent: Die Quellen, welche auf 
+dem Aufgabenblatt vorgegeben wurden, zusammen mit der im Moodle-Kurs bereitgestellten 
+Pdf $Eingabe(scanf)_Ausgabe(printf).pdf$ .
+
+\section{1.1}
+Indem wir die Ausdrücke aus dem Quelltext ineinander einsetzen und 
+Umklammern erhalten wir folgenden Ausdruck:
+\begin{align*}
+    (a \with  b) \text{ } \hat{} \text{ } \sim c * d - (e | f) \\ 
+    \overset{Klammern}{\rightarrow} ((a \with b) \text{ }  \hat{} \text{ } (\sim c * d)) - (e | f)
+\end{align*}
+
+\section{1.2}
+\scalebox{3}{
+    \begin{tikzpicture}
+        \tikzset{edge from parent/.style={draw,edge from parent path={(\tikzparentnode.south)-- +(0,-8pt)-| (\tikzchildnode)}}}
+        \Tree [.-
+        [.$\hat{}$ 
+        [.$\with$ [.a ] [.b ] ]
+        [.* [.$\sim$ [.c ] ]
+        [.d ] ] ]
+        [.$|$ 
+        [.e ]
+        [.f ] ] ]
+\end{tikzpicture}}
+\begin{enumerate}
+    \item Den Blattknoten a, b, c, d, e, f wird jeweils der Wert 1 zugewiesen.
+    \item Da der Knoten $\sim$ nur ein Kind hat, besitzt dieser 
+        Knoten ebenfalls den Wert 1.
+    \item Da $\with$, * und $|$ jeweils zwei Kinder mit dem Wert 1 haben,
+        besitzten alle dieser Knoten den Wert zwei (1 + 1 = 2).
+    \item Da $\hat{}$ zwei Kinder hat, welche jeweils den Wert 2 
+        besitzen, hat $\hat{}$ den Wert 3 (2 + 1 = 3).
+    \item - hat zwei Kinder. Das erste besitzt den Wert 3 und das 
+        zweite den Wert 2. Somit gilt: - = max( $\hat{}$, $|$) = 3.
+    \item Da - die Root des Baumes ist terminiert der Algorithmus und die 
+        Ershov-Zahl für den gegebenen Baum ist 3.
+\end{enumerate}
+\end{document}
+

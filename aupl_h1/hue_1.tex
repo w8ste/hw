@@ -1,0 +1,157 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{tipa}
+\usepackage{dsfont}
+\title{Aupl Hausuebung 1}
+\author{Hannes Albert}
+\date{April 2023}
+
+\begin{document}
+
+\maketitle
+
+\section{H1}
+\setlength\leftskip{1cm}
+a) \\
+\begin{tabular}[h]{c|c|c|c|c}
+    p & q & r & ($\neg$p $\wedge$ $\neg$ q) & ( $\neg$ p $\wedge$ $\neg$q) 
+    $\rightarrow$ (p $\vee$ ($\neg$ q $\wedge$ r)) \\
+    \hline
+    0 & 0 & 0 & 1 & 0 \\
+    0 & 0 & 1 & 1 & 1 \\
+    0 & 1 & 0 & 0 & 1 \\
+    0 & 1 & 1 & 0 & 1 \\
+    1 & 0 & 0 & 0 & 1 \\
+    1 & 0 & 1 & 0 & 1 \\
+    1 & 1 & 0 & 0 & 1 \\
+    1 & 1 & 1 & 0 & 1 \\
+\end{tabular}
+
+\bigskip
+Die Formel ist erfüllbar, da sich mindestens eine Eins in der letzten Spalte
+befindet, allerdings nicht allgemeingültig, da sich in der ersten Zeile der letzten 
+Spalte eine Null befindet. 
+\bigskip \\ 
+b)  Indem wir aus der Tabelle die DNF ablesen erhalten wir folgende
+    Formel $\varphi$ für die Wahrheitstafel:
+    \[
+        \varphi = (\neg p \wedge \neg q \wedge \neg r) \vee
+        (\neg p \wedge q \wedge \neg r) \vee
+        (p \wedge \neg q \wedge r) \vee
+        (p \wedge q \wedge \neg r) 
+    \]  
+\bigskip 
+c)  Zunächste erstellen wir eine passende Wahrheitstabelle: 
+\[
+\begin{tabular}[h]{c|c|c|c}
+    p & q & r & $\varphi$ \\ \hline
+    0 & 0 & 0 & 1 \\ 
+    0 & 0 & 1 & 1 \\
+    0 & 1 & 0 & 1 \\ 
+    0 & 1 & 1 & 0 \\ 
+    1 & 0 & 0 & 1 \\ 
+    1 & 0 & 1 & 0 \\ 
+    1 & 1 & 0 & 0 \\ 
+    1 & 1 & 1 & 0 \\
+\end{tabular}
+\]
+Somit lässt sich folgende DNF ablesen:
+\[
+    \varphi = (\neg p \wedge \neg q \wedge \neg r) \vee
+    (\neg p \wedge \neg q \wedge r) \vee
+    (\neg p \wedge q \wedge \neg r) \vee
+    (p \wedge \neg q \wedge \neg r)
+\]
+\bigskip
+d) Wie in c) erstellen wir eine passende Wahrheitstabelle
+\[
+    \begin{tabular}[h]{c|c|c|c|c}
+        p & q & r & s & $\varphi$ \\ \hline
+        0 & 0 & 0 & 0 & 0 \\  
+        0 & 0 & 0 & 1 & 1 \\
+        0 & 0 & 1 & 0 & 1 \\ 
+        0 & 0 & 1 & 1 & 0 \\ 
+        0 & 1 & 0 & 0 & 1 \\ 
+        0 & 1 & 0 & 1 & 0 \\ 
+        0 & 1 & 1 & 0 & 0 \\ 
+        0 & 1 & 1 & 1 & 1 \\ 
+        1 & 0 & 0 & 0 & 1 \\
+        1 & 0 & 0 & 1 & 0 \\
+        1 & 0 & 1 & 0 & 0 \\ 
+        1 & 0 & 1 & 1 & 1 \\ 
+        1 & 1 & 0 & 0 & 0 \\ 
+        1 & 1 & 0 & 1 & 1 \\ 
+        1 & 1 & 1 & 0 & 1 \\ 
+        1 & 1 & 1 & 1 & 0 \\ 
+    \end{tabular}
+\]
+Damit lässt sich folgende DNF ablesen:
+\begin{align*}
+    \varphi = (\neg p \wedge \neg q \wedge \neg r \wedge s) \\ 
+    \vee (\neg p \wedge \neg q \wedge r \wedge \neg s) \\
+    \vee (\neg p \wedge q \wedge \neg r \wedge \neg s) \\
+    \vee (\neg p \wedge q \wedge r \wedge s) \\
+    \vee (p \wedge \neg q \wedge \neg r \wedge \neg s) \\
+    \vee (p \wedge \neg q \wedge r \wedge s) \\
+    \vee (p \wedge q \wedge \neg r \wedge s) \\
+    \vee (p \wedge q \wedge r \wedge \neg s) 
+\end{align*}
+
+\section{H1.2}
+a) \\ 
+Mithilfe von Beispiel 2.4 bekommen wir folgendes: 
+\begin{align*}
+    p \oplus q = (\neg p \wedge q) \vee (p \wedge \neg q) \\
+               = \neg\neg((\neg p \wedge q) \vee (p \wedge \neg q)) \\
+               = \neg(\neg((\neg p \wedge q) \vee (p \wedge \neg q))) \\
+               = \neg(\neg(\neg p \wedge q) \wedge \neg(p \wedge \neg q)) 
+\end{align*}
+
+\[ 
+    p \downarrow q = \neg p \wedge \neg q
+\]
+
+b) \\ 
+Um dies zu zeigen, wir, dass $\downarrow$ ein anderes vollständiges 
+Junktorensystem [$\neg$, $\wedge$] darstellen kann: 
+\begin{align*}
+   \neg p = p \downarrow p \\
+   p \wedge q = (p \downarrow p) \downarrow (q \downarrow q)
+\end{align*}
+c) \\ 
+\begin{tabular}[h]{c|c|c|c}
+    p & q & p $\oplus$ q & q $\oplus$ p \\ \hline
+    0 & 0 & 0 & 0 \\ 
+    0 & 1 & 1 & 1 \\ 
+    1 & 0 & 1 & 1 \\ 
+    1 & 1 & 0 & 0 \\
+\end{tabular}
+\quad
+\begin{tabular}[h]{c|c|c|c|c}
+    p & q & r & (p $\oplus$ q) $\oplus$ r & p $\oplus$ (q $\oplus$ r) \\ \hline
+    0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 1 & 1 & 1 \\
+    0 & 1 & 0 & 1 & 1 \\ 
+    0 & 1 & 1 & 0 & 0 \\ 
+    1 & 0 & 0 & 1 & 1 \\ 
+    1 & 0 & 1 & 0 & 0 \\ 
+    1 & 1 & 0 & 0 & 0 \\ 
+    1 & 1 & 1 & 1 & 1 \\
+\end{tabular}
+\\
+Wie in den Tabellen zu erkennen ist sind gilt sowohl kommutativität 
+als auch Assoziativität 
+
+d) \\
+Ein vollständiges Junktorensystem wie z.B. in b) funktioniert mit $\oplus$
+nicht, da z.B. $\neg$ sich nicht darstellen lässt.
+Dafür müsste nähmlich für ein p gelten:
+\[
+    \exists n \in \mathds{Z} | \underbrace{p \oplus p ... \oplus p}_{\substack{n - mal}} = \neg p
+\]
+Da kein n existiert, so dass die obige Gleichung für p = 0 gilt folgt,
+dass es sich bei [$\oplus$] um kein vollständiges Junktorensystem handelt.
+
+\section{H1.3}
+\end{document}
